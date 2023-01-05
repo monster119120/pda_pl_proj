@@ -5,7 +5,7 @@ import torch.utils.model_zoo as model_zoo
 from .conv import Conv2dDynamic
 
 
-__all__ = ['ResNet', 'resnet18', 'resnet50', 'resnet152']
+__all__ = ['ResNet', 'resnet18', 'resnet18_dynamic', 'resnet50', 'resnet50_dynamic', 'resnet152', 'resnet152_dynamic']
 
 
 def conv3x3(in_planes, out_planes, stride=1):
