@@ -1,1 +1,2 @@
-# pda_pl_proj
+# multi-domain-pl-proj
+training multiple domain datasets once
