@@ -15,13 +15,9 @@ import pytorch_lightning as pl
 from pytorch_lightning.core import LightningModule
 
 from datasets import ImageNet_C
+from models import resnet18_dynamic, resnet50_dynamic, resnet152_dynamic
 
 class ImageNetLightningModel(LightningModule):
-    MODEL_NAMES = sorted(
-        name
-        for name in models.__dict__
-        if name.islower() and not name.startswith("__") and callable(models.__dict__[name])
-    )
 
     def __init__(
         self,
@@ -48,7 +44,9 @@ class ImageNetLightningModel(LightningModule):
         print('*' * 80)
         print(f'*************** Loading model {self.arch}')
         print('*' * 80)
-        self.model = models.__dict__[self.arch](pretrained=self.pretrained)
+        # self.model = models.__dict__[self.arch](pretrained=self.pretrained)
+        self.model = resnet18_dynamic()
+
 
     def forward(self, x):
         return self.model(x)
@@ -145,9 +143,7 @@ class ImageNetLightningModel(LightningModule):
             "-a",
             "--arch",
             metavar="ARCH",
-            default="resnet18",
-            choices=ImageNetLightningModel.MODEL_NAMES,
-            help=("model architecture: " + " | ".join(ImageNetLightningModel.MODEL_NAMES) + " (default: resnet18)"),
+            default="resnet18"
         )
         parser.add_argument(
             "-j", "--workers", default=4, type=int, metavar="N", help="number of data loading workers (default: 4)"

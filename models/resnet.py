@@ -2,7 +2,7 @@ import torch.nn as nn
 import math
 import torch
 import torch.utils.model_zoo as model_zoo
-from conv import Conv2dDynamic
+from .conv import Conv2dDynamic
 
 
 __all__ = ['ResNet', 'resnet18', 'resnet50', 'resnet152']

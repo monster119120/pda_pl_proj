@@ -1,5 +1,5 @@
 import torch.nn as nn
-from attention import Attention
+from .attention import Attention
 
 __all__ = ['Conv2dDynamic']
 
